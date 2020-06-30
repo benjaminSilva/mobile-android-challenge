@@ -6,7 +6,7 @@ import com.bsoftwares.myapplication.database.GamesDataBase
 import com.bsoftwares.myapplication.database.asDomainModel
 import com.bsoftwares.myapplication.model.Banner
 import com.bsoftwares.myapplication.network.Network
-import com.bsoftwares.myapplication.network.asDatabaseModel
+import com.bsoftwares.myapplication.network.ToDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -19,7 +19,7 @@ class GamesRepository(private val database : GamesDataBase){
     suspend fun refreshGames(){
         withContext(Dispatchers.IO){
             val banner = Network.gameshop.getBanners().await()
-            database.gamesDAO.insertAll(*banner.asDatabaseModel())
+            database.gamesDAO.insertAll(*ToDatabaseModel(banner))
         }
     }
 }

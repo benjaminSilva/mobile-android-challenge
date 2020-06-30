@@ -11,15 +11,25 @@ data class NetworkBanner(val banners : List<BannerNW>)
 data class BannerNW(
     val id : Int,
     val url : String,
-    val img : String
+    val image : String
 )
 
-fun NetworkBanner.asDatabaseModel() : Array<BannerDB>{
+/*fun NetworkBanner.asDatabaseModel() : Array<BannerDB>{
     return banners.map {
         BannerDB(
             url = it.url,
             id = it.id,
             img = it.img
+        )
+    }.toTypedArray()
+}*/
+
+fun ToDatabaseModel(list : List<BannerNW>) : Array<BannerDB> {
+    return list.map {
+        BannerDB(
+            url = it.url,
+            id = it.id,
+            img = it.image
         )
     }.toTypedArray()
 }

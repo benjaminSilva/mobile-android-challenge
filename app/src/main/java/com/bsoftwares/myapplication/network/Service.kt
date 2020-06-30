@@ -9,8 +9,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 interface GameShopService {
-    @GET("devbytes.json")
-    fun getBanners(): Deferred<NetworkBanner>
+    @GET("banners")
+    fun getBanners(): Deferred<List<BannerNW>>
 }
 
 private val moshi = Moshi.Builder()

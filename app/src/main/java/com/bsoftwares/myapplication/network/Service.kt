@@ -1,0 +1,29 @@
+package com.bsoftwares.myapplication.network
+
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+
+interface GameShopService {
+    @GET("devbytes.json")
+    fun getBanners(): Deferred<NetworkBanner>
+}
+
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+object Network {
+    // Configure retrofit to parse JSON and use coroutines
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://api-mobile-test.herokuapp.com/api/")
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .build()
+
+    val gameshop = retrofit.create(GameShopService::class.java)
+}

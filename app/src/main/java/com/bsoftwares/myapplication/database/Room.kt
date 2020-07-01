@@ -7,7 +7,7 @@ import androidx.room.*
 @Dao
 interface GamesDAO{
     @Query("select * from BannerDB")
-    fun getBanners(): LiveData<List<BannerDB>>
+    fun getBannersDB(): LiveData<List<BannerDB>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg banner: BannerDB)

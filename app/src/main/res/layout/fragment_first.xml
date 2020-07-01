@@ -30,13 +30,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.zhpan.bannerview.BannerViewPager
+        <ss.com.bannerslider.Slider
             android:id="@+id/viewPagerBanner"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_margin="@dimen/fab_margin"
-            app:bvp_auto_play="true"
-            app:bvp_can_loop="true"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />

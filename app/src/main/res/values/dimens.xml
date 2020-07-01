@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dp_4">4</dimen>
+    <dimen name="dp_100">100</dimen>
+    <dimen name="dp_3">3</dimen>
+    <dimen name="dp_4_5">4</dimen>
 </resources>

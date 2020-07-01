@@ -12,9 +12,15 @@ import kotlinx.coroutines.withContext
 
 class GamesRepository(private val database : GamesDataBase){
 
-    val banners : LiveData<List<Banner>> = Transformations.map(database.gamesDAO.getBanners()){
+    val banners : LiveData<List<Banner>> = Transformations.map(database.gamesDAO.getBannersDB()){
         it.asDomainModel()
     }
+
+    /*fun getDataRoom(){
+        banners = Transformations.map(database.gamesDAO.getBanners()){
+            it.asDomainModel()
+        }
+    }*/
 
     suspend fun refreshGames(){
         withContext(Dispatchers.IO){

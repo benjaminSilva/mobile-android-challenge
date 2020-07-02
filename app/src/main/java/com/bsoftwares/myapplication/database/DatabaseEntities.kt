@@ -50,7 +50,8 @@ fun List<SpotlightDB>.asSpotLightDomain(): List<Spotlight>{
             description = it.description,
             rating = it.rating,
             stars = it.stars,
-            reviews = it.reviews
+            reviews = it.reviews,
+            newPrice = it.price - it.discount
         )
     }
 }

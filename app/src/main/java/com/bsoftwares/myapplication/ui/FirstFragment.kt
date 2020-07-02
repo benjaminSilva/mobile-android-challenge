@@ -44,8 +44,10 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Slider.init(PicassoImageLoadingService(requireContext()))
+        val bannerAdapter =
+
         viewModel.banners.observe(viewLifecycleOwner, Observer { banners ->
-            Slider.init(PicassoImageLoadingService(requireContext()))
             viewPagerBanner.setAdapter(BannerAdapter(banners))
             viewPagerBanner.setOnSlideClickListener {
                 Toast.makeText(context, banners[it].url, Toast.LENGTH_LONG).show()

@@ -4,4 +4,5 @@
     <dimen name="dp_100">100</dimen>
     <dimen name="dp_3">3</dimen>
     <dimen name="dp_4_5">4</dimen>
+    <dimen name="espacamento_recyclerView">6dp</dimen>
 </resources>

@@ -9,7 +9,8 @@ import ss.com.bannerslider.adapters.SliderAdapter
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 
 
-class BannerAdapter(val banners : List<Banner>) : SliderAdapter() {
+class BannerAdapter(private val banners : List<Banner>) : SliderAdapter() {
+
     override fun getItemCount(): Int {
         return banners.size
     }
@@ -20,8 +21,8 @@ class BannerAdapter(val banners : List<Banner>) : SliderAdapter() {
 
 }
 
-class PicassoImageLoadingService(context: Context) : ImageLoadingService {
-    var context: Context
+class PicassoImageLoadingService(var context: Context) : ImageLoadingService {
+
     override fun loadImage(url: String?, imageView: ImageView?) {
         Picasso.get().load(url).into(imageView)
         Picasso.get().load(url).into(imageView)
@@ -41,7 +42,4 @@ class PicassoImageLoadingService(context: Context) : ImageLoadingService {
             .into(imageView)
     }
 
-    init {
-        this.context = context
-    }
 }

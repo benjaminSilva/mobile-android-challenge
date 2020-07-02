@@ -16,5 +16,6 @@ data class Spotlight(
     val description:String,
     val rating:Float,
     val stars:Int,
-    val reviews:Int
+    val reviews:Int,
+    val newPrice:Int
 )

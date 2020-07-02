@@ -10,4 +10,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="pesquisar">Pesquisar</string>
+    
+    <string name="preco">R$%1$d,00</string>
 </resources>

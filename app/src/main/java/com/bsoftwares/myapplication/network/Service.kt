@@ -11,6 +11,9 @@ import retrofit2.http.GET
 interface GameShopService {
     @GET("banners")
     fun getBanners(): Deferred<List<BannerNW>>
+
+    @GET("spotlight")
+    fun getSpotlight(): Deferred<List<SpotlightNW>>
 }
 
 private val moshi = Moshi.Builder()

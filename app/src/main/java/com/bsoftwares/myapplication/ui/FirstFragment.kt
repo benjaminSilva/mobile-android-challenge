@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bsoftwares.myapplication.R
 import com.bsoftwares.myapplication.viewmodels.BannerAdapter
 
 import com.bsoftwares.myapplication.viewmodels.HomeViewModel
 import com.bsoftwares.myapplication.viewmodels.PicassoImageLoadingService
+import com.bsoftwares.myapplication.viewmodels.SpotlightsAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
 import ss.com.bannerslider.Slider
 
@@ -47,6 +49,15 @@ class FirstFragment : Fragment() {
             viewPagerBanner.setAdapter(BannerAdapter(banners))
             viewPagerBanner.setOnSlideClickListener {
                 Toast.makeText(context, banners[it].url, Toast.LENGTH_LONG).show()
+            }
+        })
+        val adapter = SpotlightsAdapter()
+        val layoutManager = GridLayoutManager(activity,2)
+        games_rv.adapter = adapter
+        games_rv.layoutManager = layoutManager
+        viewModel.spotlights.observe(viewLifecycleOwner, Observer {spotlights ->
+            spotlights.let {
+                adapter.data = spotlights
             }
         })
         //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

@@ -5,3 +5,16 @@ data class Banner(
     val url: String,
     val img: String
 )
+
+data class Spotlight(
+    val id: Int,
+    val title:String,
+    val publisher :String,
+    val image:String,
+    val discount:Int,
+    val price:Int,
+    val description:String,
+    val rating:Float,
+    val stars:Int,
+    val reviews:Int
+)

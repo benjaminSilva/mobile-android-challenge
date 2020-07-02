@@ -6,14 +6,20 @@ import androidx.room.*
 
 @Dao
 interface GamesDAO{
-    @Query("select * from BannerDB")
+    @Query("select * from bannerdb")
     fun getBannersDB(): LiveData<List<BannerDB>>
 
+    @Query("select * from spotlightdb")
+    fun getSpotlightDB(): LiveData<List<SpotlightDB>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg banner: BannerDB)
+    fun insertBanners(vararg banner: BannerDB)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSpotlights(vararg spotlight : SpotlightDB)
 }
 
-@Database(entities = [BannerDB::class],version = 1)
+@Database(entities = [BannerDB::class,SpotlightDB::class],version = 1)
 abstract class GamesDataBase : RoomDatabase(){
     abstract val gamesDAO : GamesDAO
 }

@@ -22,6 +22,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     val banners = gameRepository.banners
+    val spotlights = gameRepository.spotlights
 
 
     class Factory(val app: Application) : ViewModelProvider.Factory {

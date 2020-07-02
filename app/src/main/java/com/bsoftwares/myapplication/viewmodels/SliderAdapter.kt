@@ -23,11 +23,12 @@ class BannerAdapter(val banners : List<Banner>) : SliderAdapter() {
 class PicassoImageLoadingService(context: Context) : ImageLoadingService {
     var context: Context
     override fun loadImage(url: String?, imageView: ImageView?) {
-        Picasso.with(context).load(url).into(imageView)
+        Picasso.get().load(url).into(imageView)
+        Picasso.get().load(url).into(imageView)
     }
 
     override fun loadImage(resource: Int, imageView: ImageView?) {
-        Picasso.with(context).load(resource).into(imageView)
+        Picasso.get().load(resource).into(imageView)
     }
 
     override fun loadImage(
@@ -36,7 +37,7 @@ class PicassoImageLoadingService(context: Context) : ImageLoadingService {
         errorDrawable: Int,
         imageView: ImageView?
     ) {
-        Picasso.with(context).load(url).placeholder(placeHolder).error(errorDrawable)
+        Picasso.get().load(url).placeholder(placeHolder).error(errorDrawable)
             .into(imageView)
     }
 

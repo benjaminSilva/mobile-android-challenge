@@ -15,7 +15,7 @@ fun TextView.addSalesLine(boolean: Boolean) {
 }
 
 @BindingAdapter("loadImage")
-fun ImageView.loadImage(url: String) {
+fun ImageView.loadImage(url : String?) {
     clipToOutline = true
     Picasso.get().load(url).fit().centerCrop().into(this)
 }

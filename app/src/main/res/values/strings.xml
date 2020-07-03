@@ -12,6 +12,9 @@
     <string name="pesquisar">Pesquisar</string>
 
     <string name="preco">R$%1$d,00</string>
+    <string name="reviews">%1$d Reviews</string>
+
+    //Teste
     <string name="muito_teste">Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar,</string>
 
 </resources>

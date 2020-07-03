@@ -1,17 +1,12 @@
-package com.bsoftwares.myapplication.viewmodels
+package com.bsoftwares.myapplication.adapters
 
-import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bsoftwares.myapplication.R
 import com.bsoftwares.myapplication.databinding.ItemLayoutBinding
 import com.bsoftwares.myapplication.model.Spotlight
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_layout.view.*
 
-class SpotlightsAdapter() : RecyclerView.Adapter<SpotlightsAdapter.SpotlightViewHolder>() {
+class SpotlightsAdapter(val clickListener: SpotlightListener) : RecyclerView.Adapter<SpotlightsAdapter.SpotlightViewHolder>() {
 
     var data = listOf<Spotlight>()
         set(value) {
@@ -20,22 +15,28 @@ class SpotlightsAdapter() : RecyclerView.Adapter<SpotlightsAdapter.SpotlightView
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpotlightViewHolder {
-        return SpotlightViewHolder.from(parent)
+        return SpotlightViewHolder.from(
+            parent
+        )
     }
 
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: SpotlightViewHolder, position: Int) {
         val item = data[position]
-        holder.bind(item)
+        holder.bind(item,clickListener)
     }
 
     //VIEWHOLDER está completamente separado do Adapter, deixando o Adapter completamente limpo
 
     class SpotlightViewHolder private constructor (val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item : Spotlight){
+        fun bind(
+            item: Spotlight,
+            clickListener: SpotlightListener
+        ){
             binding.game = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -43,10 +44,16 @@ class SpotlightsAdapter() : RecyclerView.Adapter<SpotlightsAdapter.SpotlightView
             fun from(parent: ViewGroup): SpotlightViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemLayoutBinding.inflate(layoutInflater, parent, false)
-                return SpotlightViewHolder(binding)
+                return SpotlightViewHolder(
+                    binding
+                )
             }
         }
 
     }
+}
+
+class SpotlightListener(val clickListener : (gameId : Int) ->  Unit){
+    fun onClick(gameID : Int) = clickListener(gameID)
 }
 

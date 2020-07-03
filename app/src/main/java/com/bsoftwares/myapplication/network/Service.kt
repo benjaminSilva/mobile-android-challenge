@@ -7,6 +7,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface GameShopService {
     @GET("banners")
@@ -14,6 +15,9 @@ interface GameShopService {
 
     @GET("spotlight")
     fun getSpotlight(): Deferred<List<SpotlightNW>>
+
+    @GET("games/{gameID}")
+    fun getGamesDetail(@Path("gameID") gameID : Int) : Deferred<SpotlightNW>
 }
 
 private val moshi = Moshi.Builder()

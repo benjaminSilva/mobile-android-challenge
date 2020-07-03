@@ -1,4 +1,4 @@
-package com.bsoftwares.myapplication.viewmodels
+package com.bsoftwares.myapplication.adapters
 
 import android.content.Context
 import android.widget.ImageView

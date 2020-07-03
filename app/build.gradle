@@ -15,6 +15,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -30,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dataBinding {
+    dataBinding{
         enabled = true
     }
 }

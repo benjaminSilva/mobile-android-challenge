@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bsoftwares.myapplication.R
 import com.bsoftwares.myapplication.viewmodels.BannerAdapter
@@ -41,28 +44,26 @@ class FirstFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Banner
         Slider.init(PicassoImageLoadingService(requireContext()))
-        val bannerAdapter =
-
         viewModel.banners.observe(viewLifecycleOwner, Observer { banners ->
             viewPagerBanner.setAdapter(BannerAdapter(banners))
             viewPagerBanner.setOnSlideClickListener {
-                Toast.makeText(context, banners[it].url, Toast.LENGTH_LONG).show()
+                val bundle = bundleOf("url" to banners[it].url)
+                findNavController().navigate(R.id.action_FirstFragment_to_webView, bundle)
             }
         })
+        //RecyclerView
         val adapter = SpotlightsAdapter()
-        val layoutManager = GridLayoutManager(activity,2)
+        val layoutManager = GridLayoutManager(activity, 2)
         games_rv.adapter = adapter
         games_rv.layoutManager = layoutManager
-        viewModel.spotlights.observe(viewLifecycleOwner, Observer {spotlights ->
+        viewModel.spotlights.observe(viewLifecycleOwner, Observer { spotlights ->
             spotlights.let {
                 adapter.data = spotlights
             }
         })
-        //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-
     }
 }

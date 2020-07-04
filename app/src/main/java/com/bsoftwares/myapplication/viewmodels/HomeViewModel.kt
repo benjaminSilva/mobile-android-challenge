@@ -23,6 +23,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     val banners = gameRepository.banners
     val spotlights = gameRepository.spotlights
+    val searchGames = gameRepository.searchGames
+
+    fun searchGame(texto : String){
+        viewModelScope.launch {
+            gameRepository.searchGames(texto)
+        }
+    }
 
 
     class Factory(val app: Application) : ViewModelProvider.Factory {

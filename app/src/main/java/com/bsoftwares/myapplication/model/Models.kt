@@ -19,3 +19,11 @@ data class Spotlight(
     val reviews:Int,
     val newPrice:Int
 )
+
+data class GameSearchResult(
+    val id: Int,
+    val title: String,
+    val discount: Int,
+    val price: Int,
+    val newPrice: Int
+)

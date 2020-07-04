@@ -4,6 +4,7 @@ import androidx.lifecycle.Transformations.map
 import com.bsoftwares.myapplication.database.BannerDB
 import com.bsoftwares.myapplication.database.GamesDataBase
 import com.bsoftwares.myapplication.database.SpotlightDB
+import com.bsoftwares.myapplication.model.GameSearchResult
 import com.bsoftwares.myapplication.model.Spotlight
 import com.squareup.moshi.JsonClass
 
@@ -26,6 +27,14 @@ data class SpotlightNW(
     val rating: Float,
     val stars: Int,
     val reviews: Int
+)
+
+@JsonClass(generateAdapter = true)
+data class GameSearchResultNW(
+    val id: Int,
+    val title: String,
+    val discount: Int,
+    val price: Int
 )
 
 fun List<BannerNW>.asBannedToDatabase(): Array<BannerDB> {
@@ -53,6 +62,18 @@ fun List<SpotlightNW>.asSpotlightToDatabase(): Array<SpotlightDB> {
             reviews = it.reviews
         )
     }.toTypedArray()
+}
+
+fun List<GameSearchResultNW>.asSearchResultDomain(): List<GameSearchResult> {
+    return map {
+        GameSearchResult(
+            id = it.id,
+            title = it.title,
+            discount = it.discount,
+            price = it.price,
+            newPrice = it.price - it.discount
+        )
+    }
 }
 
 fun SpotlightNW.asDomainSpotlight(): Spotlight {

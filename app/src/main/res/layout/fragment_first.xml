@@ -16,31 +16,34 @@
 
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:background="@drawable/search_background"
                 android:drawableEnd="@android:drawable/ic_btn_speak_now"
-                android:ems="10"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="@dimen/big_margin"
                 android:hint="@string/pesquisar"
-                android:inputType="textPersonName"
-                android:padding="@dimen/fab_margin"
+                android:inputType="textNoSuggestions"
+                android:padding="@dimen/big_margin"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/big_margin"
+                app:layout_constraintBottom_toTopOf="@+id/viewPagerBanner"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Estou ciente do uso de %, para fazer o layout mais adaptável a outros dispositivo -->
 
             <ss.com.bannerslider.Slider
                 android:id="@+id/viewPagerBanner"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/games_rv"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+                app:layout_constraintTop_toBottomOf="@+id/search_bar"
                 app:slider_interval="5000"
                 app:slider_loopSlides="true" />
 
@@ -48,11 +51,27 @@
                 android:id="@+id/games_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
                 android:orientation="vertical"
+                android:layout_margin="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewPagerBanner" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:background="@drawable/search_background_results"
+                android:padding="@dimen/big_margin"
+                android:visibility="invisible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_bar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_margin="@dimen/big_margin"
         style="@style/fab"
         app:srcCompat="@drawable/ic_baseline_shopping_cart" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

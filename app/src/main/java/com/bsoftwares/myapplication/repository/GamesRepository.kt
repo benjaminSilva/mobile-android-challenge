@@ -7,11 +7,9 @@ import com.bsoftwares.myapplication.database.GamesDataBase
 import com.bsoftwares.myapplication.database.asBannerDomain
 import com.bsoftwares.myapplication.database.asSpotLightDomain
 import com.bsoftwares.myapplication.model.Banner
+import com.bsoftwares.myapplication.model.GameSearchResult
 import com.bsoftwares.myapplication.model.Spotlight
-import com.bsoftwares.myapplication.network.Network
-import com.bsoftwares.myapplication.network.asBannedToDatabase
-import com.bsoftwares.myapplication.network.asDomainSpotlight
-import com.bsoftwares.myapplication.network.asSpotlightToDatabase
+import com.bsoftwares.myapplication.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -24,12 +22,6 @@ class GamesRepository(private val database : GamesDataBase){
     val spotlights : LiveData<List<Spotlight>> = Transformations.map(database.gamesDAO.getSpotlightDB()){
         it.asSpotLightDomain()
     }
-
-    /*fun getDataRoom(){
-        banners = Transformations.map(database.gamesDAO.getBanners()){
-            it.asDomainModel()
-        }
-    }*/
 
     suspend fun refreshGames(){
         withContext(Dispatchers.IO){
@@ -52,4 +44,16 @@ class GamesRepository(private val database : GamesDataBase){
             _gameDetails.postValue(gameDetail.asDomainSpotlight())
         }
     }
+
+    val searchGames : LiveData<List<GameSearchResult>>
+        get() = _searchGames
+    private val _searchGames = MutableLiveData<List<GameSearchResult>>()
+
+    suspend fun searchGames(busca : String){
+        withContext(Dispatchers.IO){
+            val result = Network.gameshop.getSearchResult(busca).await()
+            _searchGames.postValue(result.asSearchResultDomain())
+        }
+    }
+
 }

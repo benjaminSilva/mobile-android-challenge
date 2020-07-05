@@ -88,6 +88,7 @@ fun SpotlightNW.asDomainSpotlight(): Spotlight {
         rating = this.rating,
         stars = this.stars,
         reviews = this.reviews,
-        newPrice = this.price - this.discount
+        newPrice = this.price - this.discount,
+        quantities = 1
     )
 }

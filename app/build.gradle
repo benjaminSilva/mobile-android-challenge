@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.0'
@@ -74,4 +75,8 @@ dependencies {
 
     // ViewModel and LiveData (arch components)
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    //Badge
+    implementation 'com.github.nikartm:image-support:1.0.5'
+    implementation 'com.github.andremion:counterfab:1.2.2'
 }

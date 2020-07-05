@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cart"
+            type="com.bsoftwares.myapplication.model.Cart" />
+
+        <variable
+            name="clickListener"
+            type="com.bsoftwares.myapplication.adapters.CartListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageGameCart"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="@dimen/big_margin"
+            loadImage="@{cart.image}"
+            android:background="@drawable/search_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textCartGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_margin"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@{cart.title}"
+            app:layout_constraintStart_toEndOf="@+id/imageGameCart"
+            app:layout_constraintTop_toTopOf="@+id/imageGameCart"
+            tools:text="Teste" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/counterController"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@drawable/count_controller"
+            app:layout_constraintStart_toStartOf="@+id/textCartGameName"
+            app:layout_constraintTop_toBottomOf="@+id/textCartGameName">
+
+            <ImageButton
+                android:id="@+id/btn_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                android:layout_margin="@dimen/small_margin"
+                android:onClick="@{() -> clickListener.plus(cart)}"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+            <TextView
+                android:id="@+id/textQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_margin"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@{Integer.toString(cart.quantities)}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
+                app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus"
+                app:layout_constraintTop_toTopOf="@+id/btn_plus"
+                tools:text="0" />
+
+            <ImageButton
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_remove"
+                android:layout_margin="@dimen/small_margin"
+                android:onClick="@{() -> clickListener.minus(cart)}"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/btn_removeGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_margin"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_trash"
+            android:onClick="@{() -> clickListener.delete(cart)}"
+            app:layout_constraintBottom_toBottomOf="@+id/counterController"
+            app:layout_constraintStart_toEndOf="@+id/counterController"
+            app:layout_constraintTop_toTopOf="@+id/counterController" />
+
+        <TextView
+            android:id="@+id/textTotalValueOfGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_margin"
+            addSalesLine="@{true}"
+            android:text="@{@string/preco(cart.totalPrice)}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCartGameName"
+            tools:text="Teste" />
+
+        <TextView
+            android:id="@+id/textTotalValueOfGameWithDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:text="@{@string/preco(cart.totalNewPrice)}"
+            app:layout_constraintEnd_toEndOf="@+id/textTotalValueOfGame"
+            app:layout_constraintTop_toBottomOf="@+id/textTotalValueOfGame"
+            tools:text="Teste" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

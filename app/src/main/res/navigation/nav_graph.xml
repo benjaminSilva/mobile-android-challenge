@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.bsoftwares.myapplication.ui.FirstFragment"
+        android:name="com.bsoftwares.myapplication.ui.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_webView"
@@ -19,6 +19,9 @@
             app:destination="@id/detailsFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_FirstFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/webView"
@@ -37,5 +40,13 @@
         <argument
             android:name="gameID"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.bsoftwares.myapplication.ui.CartFragment"
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

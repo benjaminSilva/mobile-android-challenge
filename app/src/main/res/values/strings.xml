@@ -16,5 +16,13 @@
 
     //Teste
     <string name="muito_teste">Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar, Muito texto aqui para a gente testar,</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total">TOTAL</string>
+    <string name="finalizar_compra">Finalizar Compra</string>
+    <string name="adicionado_removido">O jogo foi %1$s ao carrinho</string>
+    <string name="carrinho">Carrinho</string>
+    <string name="produtos">%1$d Produto(s)</string>
+
 
 </resources>

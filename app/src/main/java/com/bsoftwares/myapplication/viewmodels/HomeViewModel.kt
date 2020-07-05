@@ -24,6 +24,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val banners = gameRepository.banners
     val spotlights = gameRepository.spotlights
     val searchGames = gameRepository.searchGames
+    val gamesInCart = gameRepository.cartList
 
     fun searchGame(texto : String){
         viewModelScope.launch {
